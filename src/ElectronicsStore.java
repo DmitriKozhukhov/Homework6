@@ -33,12 +33,13 @@ public class ElectronicsStore {
         }
 
         while (true) {
+            Scanner scan = new Scanner(System.in);
             System.out.println();
             System.out.println("ГЛАВНОЕ МЕНЮ");
             System.out.println();
             System.out.println("Введите start, для настройки фильтра поиска ноутбуков");
             System.out.println("для завершения программы введите end");
-            String command = scannerMethod();
+            String command = scan.nextLine();
             if (command.equals("end")) {
                 break;
             }
@@ -50,6 +51,7 @@ public class ElectronicsStore {
     }
 
     public static void searchFilter() {
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println();
@@ -63,14 +65,14 @@ public class ElectronicsStore {
                             "Введите \n" +
                             "search - для начала поиска(хотя бы одна характеристика должна быть добавлена в фильтр)\n" +
                             "0 - для выхода в главное меню(настройки фильтра будут сброшены)");
-            String command = scannerMethod();
+            String command = scanner.nextLine();
             switch (command) {
                 case "0":
                     break;
                 case "1":
                     System.out.println();
                     System.out.println("Введите модель ноутбука(Например Asus1, Acer2, Samsung1)");
-                    String model = scannerMethod();
+                    String model = scanner.nextLine();
                     filterSettings.put("model", model);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -79,7 +81,7 @@ public class ElectronicsStore {
                 case "2":
                     System.out.println();
                     System.out.println("Введите операционную систему(Например Windows10, Windows11)");
-                    String os = scannerMethod();
+                    String os = scanner.nextLine();
                     filterSettings.put("os", os);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -88,7 +90,7 @@ public class ElectronicsStore {
                 case "3":
                     System.out.println();
                     System.out.println("Введите модель процессора(Например intel core-i5, intel core-i7)");
-                    String cpuType = scannerMethod();
+                    String cpuType = scanner.nextLine();
                     filterSettings.put("cpuType", cpuType);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -97,7 +99,7 @@ public class ElectronicsStore {
                 case "4":
                     System.out.println();
                     System.out.println("Введите минимальную частоту процессора(МГц)");
-                    String cpuSpeed = scannerMethod();
+                    String cpuSpeed = scanner.nextLine();
                     filterSettings.put("cpuSpeed", cpuSpeed);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -107,7 +109,7 @@ public class ElectronicsStore {
                 case "5":
                     System.out.println();
                     System.out.println("Введите минимальный объем оперативной памяти(Гб)");
-                    String memory = scannerMethod();
+                    String memory = scanner.nextLine();
                     filterSettings.put("memory", memory);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -116,7 +118,7 @@ public class ElectronicsStore {
                 case "6":
                     System.out.println();
                     System.out.println("тип постоянного носителя(hdd или ssd)");
-                    String storageType = scannerMethod();
+                    String storageType = scanner.nextLine();
                     filterSettings.put("storageType", storageType);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -126,7 +128,7 @@ public class ElectronicsStore {
                 case "7":
                     System.out.println();
                     System.out.println("Введите минимальный объем памяти постоянного носителя(Гб)");
-                    String storageSize = scannerMethod();
+                    String storageSize = scanner.nextLine();
                     filterSettings.put("storageSize", storageSize);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -135,7 +137,7 @@ public class ElectronicsStore {
                 case "8":
                     System.out.println();
                     System.out.println("Введите минимальный размер диагонали экрана(дюймы)");
-                    String displaySize = scannerMethod();
+                    String displaySize = scanner.nextLine();
                     filterSettings.put("displaySize", displaySize);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -144,7 +146,7 @@ public class ElectronicsStore {
                 case "9":
                     System.out.println();
                     System.out.println("Введите цвет ноутбука(например black, grey, silver)");
-                    String color = scannerMethod();
+                    String color = scanner.nextLine();
                     filterSettings.put("color", color);
                     System.out.println("Текущие настройки фильтра: ");
                     System.out.println(filterSettings);
@@ -153,6 +155,7 @@ public class ElectronicsStore {
 
 
                 case "search":
+                    scanner.close();
                     System.out.println("Запуск поиска с фильтром: ");
                     System.out.println(filterSettings);
                     searchNotebook();
@@ -162,15 +165,9 @@ public class ElectronicsStore {
                     searchFilter();
 
             }
+            scanner.close();
             break;
         }
-    }
-
-    public static String scannerMethod() {
-        Scanner scanner = new Scanner(System.in);
-        String result = scanner.nextLine();
-        scanner.close();
-        return result;
     }
 
     private static void searchNotebook() {
