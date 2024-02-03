@@ -155,7 +155,6 @@ public class ElectronicsStore {
 
 
                 case "search":
-                    scanner.close();
                     System.out.println("Запуск поиска с фильтром: ");
                     System.out.println(filterSettings);
                     searchNotebook();
