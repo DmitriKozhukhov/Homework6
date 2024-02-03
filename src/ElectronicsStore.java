@@ -25,6 +25,7 @@ public class ElectronicsStore {
 
     static Set<Notebook> notebooks = new HashSet<>(Arrays.asList(notebook1, notebook2, notebook3,
             notebook4, notebook5, notebook6, notebook7, notebook8, notebook9, notebook10));
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -33,13 +34,12 @@ public class ElectronicsStore {
         }
 
         while (true) {
-            Scanner scan = new Scanner(System.in);
             System.out.println();
             System.out.println("ГЛАВНОЕ МЕНЮ");
             System.out.println();
             System.out.println("Введите start, для настройки фильтра поиска ноутбуков");
             System.out.println("для завершения программы введите end");
-            String command = scan.nextLine();
+            String command = scanner.nextLine();
             if (command.equals("end")) {
                 break;
             }
@@ -51,7 +51,6 @@ public class ElectronicsStore {
     }
 
     public static void searchFilter() {
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println();
@@ -155,7 +154,6 @@ public class ElectronicsStore {
 
 
                 case "search":
-                    scanner.close();
                     System.out.println("Запуск поиска с фильтром: ");
                     System.out.println(filterSettings);
                     searchNotebook();
@@ -165,7 +163,6 @@ public class ElectronicsStore {
                     searchFilter();
 
             }
-            scanner.close();
             break;
         }
     }
