@@ -165,7 +165,6 @@ public class ElectronicsStore {
                     searchFilter();
 
             }
-            scanner.close();
             break;
         }
     }
